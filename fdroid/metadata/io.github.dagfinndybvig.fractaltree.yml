@@ -22,12 +22,12 @@ RepoType: git
 Repo: https://github.com/dagfinndybvig/FractalTree.git
 AutoUpdateMode: Version v%v
 UpdateCheckMode: Tags
-CurrentVersion: 1.2-alpha
-CurrentVersionCode: 3
+CurrentVersion: 1.2.1-alpha
+CurrentVersionCode: 4
 Builds:
-  - versionName: 1.2-alpha
-    versionCode: 3
-    commit: v1.2-alpha
+  - versionName: 1.2.1-alpha
+    versionCode: 4
+    commit: v1.2.1-alpha
     subdir: android
     gradle:
       - yes

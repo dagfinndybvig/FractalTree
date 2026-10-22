@@ -15,8 +15,8 @@ android {
         applicationId 'io.github.dagfinndybvig.fractaltree'
         minSdk 24
         targetSdk 34
-        versionCode 3
-        versionName '1.2-alpha'
+        versionCode 4
+        versionName '1.2.1-alpha'
     }
 
     signingConfigs {
