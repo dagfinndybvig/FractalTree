@@ -1,0 +1,66 @@
+# AGENTS.md — Processing workspace
+
+This directory is a Processing 4.5.7 (portable, Windows x64) creative-coding
+workspace. Read `README.md` for the full layout. Key facts for agents:
+
+## Environment
+
+- IDE executable: `Processing\Processing.exe` (portable install, no admin).
+- Bundled JDK: `Processing\app\resources\jdk\bin\{java.exe,javac.exe}`.
+- Core jar for compiling: `Processing\app\core-4.5.7-*.jar` (glob the version).
+- There is **no `processing-java` CLI** in portable builds.
+
+## Verifying sketches (do this before telling the user it works)
+
+1. Write a Java-mode equivalent: a class extending `processing.core.PApplet`
+   with `settings()`, `setup()`, `draw()`, and
+   `public static void main(String[] a) { PApplet.main("ClassName"); }`.
+   Processing-DSL calls are the same; add `f` suffixes to float literals.
+2. Compile: `javac.exe -cp <core.jar> ClassName.java`
+3. Run in a **background process**, sleep ~8s, read output, then **stop the
+   process**. A clean run prints only terminal escape sequences; Java stack
+   traces mean failure.
+4. Delete the verification `.java`/`.class` files afterwards — sketches
+   should ship as `.pde` only.
+
+## Gotchas
+
+- Sketch folder name must equal the `.pde` filename; reserved words
+  (`color`, `int`, ...) are invalid sketch names.
+- Sketches exist in exactly two places: this directory (baseline/testing
+  copies) and the sketchbook at
+  `C:\Users\dybvig\OneDrive - NTNU\Documents\Processing` (Documents is
+  OneDrive-redirected; confirm via `sketchbook.path.four` in
+  `%APPDATA%\Processing\preferences.txt`). The plain
+  `C:\Users\dybvig\Documents\Processing` path is NOT a sketchbook — the IDE
+  never reads it; do not put sketches there. Keep the two locations in sync
+  when a sketch changes, and say which one you are editing. The IDE only
+  rescans the sketchbook at startup, and launching `Processing.exe`
+  while an instance is already running silently drops the file-open argument
+  — kill existing instances before relaunching with a sketch path.
+- Launching `Processing.exe` or a sketch from a shell blocks that shell until
+  the GUI exits — use background processes, and don't treat the blocked shell
+  as a hang or failure.
+- Do not leave sketch windows running after verification; stop them.
+- `findstr` misbehaves inside the Git Bash layer here (treats patterns as
+  filenames); use `grep` with `tasklist`/file output instead.
+
+## Android builds
+
+`FractalTree.apk` is built headlessly from `android-build\project\` — the
+full pipeline, dependency closure, and hard-won gotchas are documented in
+`ANDROID.md`. Read it before touching the build. Key points:
+
+- The Android sketch source is `android-build\project\TreeSketch.java`
+  (Java syntax — `(int)` casts, `f` float suffixes). Keep it in sync with
+  `tree\tree.pde` when the sketch changes, and sync both sketch locations.
+- **Ship rule: verify in the emulator with the user before delivering an
+  APK.** Build, install, launch on the `testdev` AVD (start it with a
+  window and audio: `emulator -avd testdev -no-snapshot -gpu
+  swiftshader_indirect`), screenshot via `adb exec-out screencap -p`, and
+  let the user look before copying the APK to the workspace root.
+- Test a rotation (`adb shell settings put system user_rotation 1`) — some
+  crashes (e.g. missing androidx.loader) only appear on config changes
+  that a static headless run never triggers.
+- The approved APK lives at the workspace root; `android-build\project\`
+  holds the latest build, which may be ahead of it until verified.

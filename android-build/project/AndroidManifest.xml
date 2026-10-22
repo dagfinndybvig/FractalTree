@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="processing.test.treesketch"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+  <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="33"/>
+
+  <application android:label="Fractal Tree">
+    <activity android:name=".MainActivity"
+        android:theme="@style/Theme.Tree"
+        android:exported="true"
+        android:configChanges="orientation|screenSize|keyboardHidden">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+
+    <provider android:name="androidx.startup.InitializationProvider"
+        android:authorities="processing.test.treesketch.androidx-startup"
+        android:exported="false">
+      <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>
+      <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup"/>
+    </provider>
+  </application>
+</manifest>
