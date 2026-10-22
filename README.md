@@ -35,8 +35,8 @@ Android build sources, the small build inputs that are painful to recreate
 keystore), and the shipped APK. Ignored via `.gitignore`: the portable IDE,
 the Android SDK, AndroidMode, AndroidX source aars, and all generated build
 intermediates — all re-downloadable or regenerated per `ANDROID.md`. A
-fresh clone must run the full `ANDROID.md` pipeline (steps 1–2) once before
-`android-build\project\build.bat` works.
+fresh clone builds with the gradle project in `android\` (see "Android
+build" below) — no legacy-pipeline setup needed.
 
 ## Install on Android (FractalTree)
 
@@ -73,10 +73,10 @@ The IDE's sketchbook is
 **OneDrive-redirected**, so the plain `C:\Users\dybvig\Documents\Processing`
 path is *not* the sketchbook. The authoritative path is `sketchbook.path.four`
 in `%APPDATA%\Processing\preferences.txt`. Copies of all sketches live
-there too. Two locations only: the sketchbook (what the IDE opens) and this
-directory (baseline/testing copies) — keep them in sync when a sketch
-changes. The IDE only scans the sketchbook at startup, so new folders appear
-in File → Sketchbook after a restart.
+there too. Three locations: the sketchbook (what the IDE opens), this
+directory (baseline/testing copies), and the GitHub repo — keep them in
+sync when a sketch changes. The IDE only scans the sketchbook at startup,
+so new folders appear in File → Sketchbook after a restart.
 
 ## Sound
 
@@ -87,50 +87,23 @@ otherwise downloads it on first import. Import with
 `import processing.sound.*;`. Note: in Sound 2.x the `Noise` class is
 abstract — use `WhiteNoise`, `PinkNoise`, or `BrownNoise`.
 
-## Later: Android & Google Play (tips)
+## Android notes (tips)
 
-- **Processing for Android** is an official mode: same `setup()`/`draw()`
-  code, exported as an APK. Install via the IDE's mode selector; first use
-  downloads the Android SDK (~1 GB+). `size()` becomes `fullScreen()`, mouse
-  events map to touch; sensors/camera/multi-touch come via the **Ketai**
-  library.
-- **Cheapest experiment**: build an APK of an existing sketch and sideload
-  it on a phone (USB debugging). No store account needed — tells you how the
-  code feels on touch before any investment. **Already done here**: the tree
-  sketch ships as `FractalTree.apk`, built headlessly — see `ANDROID.md`
-  for the pipeline and `AGENTS.md` for the verify-in-emulator rule.
-- **Sideloading these days**:
-  - No-cable way: copy the APK to the phone (Drive/email/download), tap it
-    in Files; Android asks to allow *that specific app* to install unknown
-    apps (Settings → Apps → Special access → Install unknown apps), then tap
-    the APK again. Permission is per-app, not global.
-  - Developer way: About phone → tap Build number 7x → Developer options →
-    USB debugging → plug in, accept the fingerprint dialog → `adb install
-    app.apk` (adb = Android SDK platform-tools, small standalone download).
-  - Android 10+ supports wireless ADB: Developer options → Wireless
-    debugging → `adb pair <ip:port>` with the on-screen code, then `adb
-    connect` — installs over Wi-Fi, no cable.
-  - Gotchas: Play Protect may warn on sideloaded APKs (overridable; proper
-    signing reduces friction), and APKs targeting very old API levels are
-    refused by recent Android versions.
-  - With Android Mode, "Run on device" does the adb dance automatically once
-    USB debugging is enabled; manual `adb install` is only for separately
-    exported APKs.
-- **Google Play hurdles** if publishing for real:
-  - Developer account: $25 one-time.
-  - Play requires **App Bundle (AAB)** for new apps; Android Mode exports
-    APKs, so expect to wrangle the generated Gradle project for AAB.
-  - Play requires targeting a recent Android API; check the mode's
-    toolchain version against the current requirement first.
-  - Store listing work is on you: screenshots, content rating, privacy
-    policy, Data safety form.
-- **Engine choice**: Processing suits sketch-like/artistic 2D games;
-  **libGDX** (also Java, similar feel) is the production-ready path with AAB
-  and multi-platform support; Godot/Unity have store tooling built in.
-  Pragmatic route: prototype in Processing, port the logic to libGDX for the
-  Play release.
-- **Alternative for "sketches on a phone"**: p5.js in a mobile browser — no
-  SDK, no APK, just a web page.
+- **Processing for Android** is an official IDE mode: same `setup()`/`draw()`
+  code, exported as an APK. We skipped it — the app is built headlessly with
+  gradle instead (see below), which is what F-Droid needs.
+- **Sideloading**: copy the APK to the phone and tap it in Files; Android
+  asks to allow *that specific app* to install unknown apps (per-app, not
+  global), then tap the APK again. Play Protect may warn on sideloaded
+  APKs — expected and overridable. Wireless ADB
+  (Developer options → Wireless debugging → `adb pair`) installs over
+  Wi-Fi without a cable.
+- **Google Play** (not planned): $25 one-time account, App Bundle (AAB)
+  instead of APK, recent target API, and store-listing work (screenshots,
+  content rating, privacy policy, Data safety form).
+- **Engine choice**: Processing suits sketch-like/artistic 2D apps; libGDX
+  is the production-ready Java path if a Play release ever happens.
+  p5.js in a mobile browser is the zero-install alternative.
 
 ## Android build
 
@@ -145,7 +118,10 @@ gradlew.bat assembleRelease
 ```
 
 with `JAVA_HOME` set to the bundled JDK and `sdk.dir` in
-`android\local.properties` (gitignored). Output:
+`android\local.properties` (gitignored). On this machine,
+`android\gradlebuild.bat assembleRelease` sets both paths for you (it is
+machine-specific and not the F-Droid path — their builds use the committed
+gradle wrapper). Output:
 `android\app\build\outputs\apk\release\app-release.apk` — copy to the
 workspace root after emulator verification. The original hand-built
 pipeline (`aapt2 link` → `javac --release 8` → `d8` → `zipalign` →

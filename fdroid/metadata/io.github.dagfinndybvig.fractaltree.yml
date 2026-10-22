@@ -1,6 +1,7 @@
 # F-Droid build metadata draft for FractalTree.
 # To submit: fork https://gitlab.com/fdroid/fdroiddata, copy this file to
-# metadata/processing.test.treesketch.yml, and open a merge request.
+# metadata/io.github.dagfinndybvig.fractaltree.yml in the fork, and open a
+# merge request (see TODO.md).
 # Known review friction: app/libs/*.jar are prebuilt (Processing Android core,
 # Sound library, JSyn — all LGPL, provenance documented in ANDROID.md).
 Categories:

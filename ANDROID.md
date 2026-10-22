@@ -43,9 +43,11 @@ Gotcha hit in practice: referencing sources/jars OUTSIDE the module via
 the same directory. A standard in-module layout avoids it.
 `android.disableMinifyLocalDependenciesForLibraries` did NOT help.
 
-F-Droid: metadata draft at `fdroid\metadata\processing.test.treesketch.yml`
-(copy into a fork of gitlab.com/fdroid/fdroiddata and open an MR). The
-prebuilt jars in `app\libs\` are the expected review friction.
+F-Droid: metadata draft at
+`fdroid\metadata\io.github.dagfinndybvig.fractaltree.yml` (copy into a fork
+of gitlab.com/fdroid/fdroiddata and open an MR — see TODO.md for the
+step-by-step). The prebuilt jars in `app\libs\` are the expected review
+friction.
 
 ## Layout
 
