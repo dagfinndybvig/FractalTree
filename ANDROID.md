@@ -44,10 +44,10 @@ the same directory. A standard in-module layout avoids it.
 `android.disableMinifyLocalDependenciesForLibraries` did NOT help.
 
 F-Droid: metadata draft at
-`fdroid\metadata\io.github.dagfinndybvig.fractaltree.yml` (copy into a fork
-of gitlab.com/fdroid/fdroiddata and open an MR — see TODO.md for the
-step-by-step). The prebuilt jars in `app\libs\` are the expected review
-friction.
+`fdroid\metadata\io.github.dagfinndybvig.fractaltree.yml`. To submit: fork
+gitlab.com/fdroid/fdroiddata, copy the file into the fork's `metadata\`,
+and open a merge request. The prebuilt jars in `app\libs\` are the expected
+review friction.
 
 ## Layout
 
@@ -253,7 +253,7 @@ and stays alive with an empty error log.
   (was Processing's export default `processing.test.treesketch`).
 - **F-Droid**: metadata draft ready in `fdroid\metadata\`; the submission
   merge request to gitlab.com/fdroid/fdroiddata is the remaining step —
-  tooling is prepared (glab CLI + token, see TODO.md).
+  tooling is prepared locally (glab CLI + access token).
   Expected review topic: the prebuilt jars in `app\libs\` (LGPL,
   provenance documented above).
 - **Releases**: GitHub releases are the distribution channel. Convention:

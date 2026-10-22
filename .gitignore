@@ -40,3 +40,6 @@
 /android/.gradle/
 /android/app/build/
 /android/local.properties
+
+# Local roadmap — not part of the public repo
+TODO.md

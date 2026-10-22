@@ -22,7 +22,6 @@ C:\Users\dybvig\Coding\Processing\
 ├── android-build\               Legacy hand-built pipeline + Android SDK
 ├── fdroid\                      F-Droid metadata draft
 ├── tools\                       Helper scripts (launcher-icon generator)
-├── TODO.md                      Remaining work roadmap
 └── README.md / AGENTS.md        Docs for humans and agents
 ```
 
