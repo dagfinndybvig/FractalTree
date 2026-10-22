@@ -34,6 +34,15 @@ intermediates — all re-downloadable or regenerated per `ANDROID.md`. A
 fresh clone must run the full `ANDROID.md` pipeline (steps 1–2) once before
 `android-build\project\build.bat` works.
 
+## Install on Android (FractalTree)
+
+The signed APK ships in this repo and in [Releases](https://github.com/dagfinndybvig/FractalTree/releases).
+To sideload: copy `FractalTree.apk` to the phone (download link, Drive, etc.),
+tap it in Files, and allow *this app* to install unknown apps when Android
+asks (the permission is per-app, not global), then tap the APK again. Play
+Protect may show a warning for sideloaded apps — expected for anything not
+from the Play Store. Requires Android 7.0+ (minSdk 24). Tap the tree to mute.
+
 ## Running sketches
 
 - **IDE**: run `Processing\Processing.exe`, open a sketch, press Ctrl+R.
@@ -147,3 +156,9 @@ AAB conversion for Play.
   update, download a portable zip from
   https://github.com/processing/processing4/releases and extract over (or
   beside) `Processing\`.
+
+## License
+
+MIT — see [LICENSE](LICENSE). The bundled dependencies keep their own
+licenses: Processing core and the Sound library are LGPL-2.1, JSyn is
+LGPL, AndroidX is Apache-2.0.
