@@ -125,24 +125,26 @@ abstract — use `WhiteNoise`, `PinkNoise`, or `BrownNoise`.
 - **Alternative for "sketches on a phone"**: p5.js in a mobile browser — no
   SDK, no APK, just a web page.
 
-## Android build (done once, reusable)
+## Android build
 
-A signed APK of the tree sketch exists at `FractalTree.apk` (2.6 MB — the
-Sound library is dexed in, minSdk 24, targetSdk 33, signed with a local
-debug key). The full pipeline,
-versions, and gotchas are documented in **ANDROID.md**; the short version:
+The app ships as `FractalTree.apk` (app id
+`io.github.dagfinndybvig.fractaltree`, minSdk 24, targetSdk 34, signed
+with a local debug key). The primary build is the gradle project in
+`android\`:
 
-- Toolchain in `android-build\`: Android cmdline-tools + platform 33 +
-  build-tools 33.0.2, plus Processing's Android core jarred from the
-  AndroidMode release.
-- Pipeline: `aapt2 link` → `javac --release 8` → `d8` → `zipalign` →
-  `apksigner` (invoke d8/apksigner via `java -cp`, their `.bat` wrappers are
-  broken on modern JDKs).
-- Install: enable USB debugging (or per-app "install unknown apps"), then
-  `adb install FractalTree.apk` or tap the APK in Files.
+```
+cd android
+gradlew.bat assembleRelease
+```
 
-Not yet done: sound (needs the Android Sound library dexed in), icons,
-AAB conversion for Play.
+with `JAVA_HOME` set to the bundled JDK and `sdk.dir` in
+`android\local.properties` (gitignored). Output:
+`android\app\build\outputs\apk\release\app-release.apk` — copy to the
+workspace root after emulator verification. The original hand-built
+pipeline (`aapt2 link` → `javac --release 8` → `d8` → `zipalign` →
+`apksigner`, no gradle) is kept in `android-build\` as frozen reference;
+**ANDROID.md** documents both, plus the F-Droid metadata draft in
+`fdroid\`.
 
 ## Gotchas
 

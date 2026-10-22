@@ -243,12 +243,15 @@ and stays alive with an empty error log.
 4. Re-run the pipeline. The R-generation step (step 2) is sketch-independent
    — reuse `tmpman\` and `ids.txt` as-is.
 
-## Not yet done
+## Status
 
-- **App icon**: the APK has no icon (default Android robot shows). Add a
-  `res/mipmap-*` icon and reference `android:icon` in the manifest.
-- **AAB / Play Store**: this is an APK for sideloading. Play requires an
-  App Bundle and a real signing key — see README's Android tips section.
-- **targetSdk 33**: current by Processing's standard, but Play now wants
-  newer targets; fine for sideloading (the phone shows an "older SDK"
-  warning — safe to ignore for a self-built app).
+- **App icon**: done since v1.2-alpha (adaptive icon + legacy mipmaps,
+  tree glyph in the sketch's palette).
+- **App id**: `io.github.dagfinndybvig.fractaltree` since v1.2-alpha
+  (was Processing's export default `processing.test.treesketch`).
+- **F-Droid**: metadata draft ready in `fdroid\metadata\`; the submission
+  merge request to gitlab.com/fdroid/fdroiddata is the remaining step.
+  Expected review topic: the prebuilt jars in `app\libs\` (LGPL,
+  provenance documented above).
+- **AAB / Play Store**: not planned — distribution is GitHub releases
+  and (hopefully) F-Droid.

@@ -77,5 +77,6 @@ cannot build the current sources (package renamed to
 - Test a rotation (`adb shell settings put system user_rotation 1`) — some
   crashes (e.g. missing androidx.loader) only appear on config changes
   that a static headless run never triggers.
-- The approved APK lives at the workspace root; `android-build\project\`
-  holds the latest build, which may be ahead of it until verified.
+- The approved APK lives at the workspace root; the latest build lands in
+  `android\app\build\outputs\apk\release\` (gitignored) — copy it to the
+  root only after emulator verification.
