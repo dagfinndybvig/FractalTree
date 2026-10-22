@@ -4,6 +4,42 @@ How `FractalTree.apk` was built from the tree sketch, headlessly, without
 Android Mode's GUI — and verified running on an emulator. The toolchain is
 reusable for other sketches.
 
+**The primary build is now the gradle project in `android\`** (below); the
+hand-built pipeline in this document is kept for reference and as a
+fallback.
+
+## Gradle pipeline (primary, F-Droid-ready)
+
+`android\` is a standard gradle project (gradle 8.9, AGP 8.5.2, compileSdk
+34, targetSdk 34, versionCode 2 / versionName 1.1-alpha):
+
+- `android\app\src\main\java\processing\test\treesketch\` — TreeSketch.java
+  (canonical Android sketch source) + MainActivity.java
+- `android\app\src\main\res\values\styles.xml` — Theme.Tree
+- `android\app\src\main\assets\shaders\` — the core GLES shaders
+- `android\app\libs\` — processing-core.jar, sound.jar, jsyn-17.1.0.jar
+  (prebuilt from LGPL sources; provenance in this file)
+- AndroidX comes from Maven (`appcompat:1.6.1`, `activity:1.6.1`) — the
+  hand-built 34-jar closure is NOT used by this pipeline.
+
+Build: `cd android && gradlew.bat assembleRelease` with `JAVA_HOME` set to
+the bundled JDK and `sdk.dir` in `android\local.properties` (gitignored).
+Output: `android\app\build\outputs\apk\release\app-release.apk`, signed
+with the same `debug.keystore` as the hand-built pipeline, so its APKs
+install over the hand-built ones. Verify in the emulator per AGENTS.md
+before shipping.
+
+Gotcha hit in practice: referencing sources/jars OUTSIDE the module via
+`sourceSets`/`files()` made AGP 8.5.2 dex the generated R.jar twice —
+`Type androidx.tracing.R is defined multiple times` between
+`project_dex_archive/.../androidx/tracing/R.dex` and a hash-named jar in
+the same directory. A standard in-module layout avoids it.
+`android.disableMinifyLocalDependenciesForLibraries` did NOT help.
+
+F-Droid: metadata draft at `fdroid\metadata\processing.test.treesketch.yml`
+(copy into a fork of gitlab.com/fdroid/fdroiddata and open an MR). The
+prebuilt jars in `app\libs\` are the expected review friction.
+
 ## Layout
 
 ```

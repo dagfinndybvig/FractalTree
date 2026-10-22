@@ -15,7 +15,9 @@ for %%f in (%ROOT%\android-build\androidx\classes\*.jar) do set XJARS=!XJARS! "%
 cd /d %ROOT%\android-build\project || exit /b 1
 
 echo == javac ==
-"%JDK%\javac.exe" --release 8 -classpath "classes;%AJ%;%CORE%;..\sound\sound.jar;..\sound\jsyn-17.1.0.jar!XJARS!" -d classes TreeSketch.java || exit /b 1
+rem Source of truth for the Android sketch is now the gradle project:
+rem   android\app\src\main\java\processing\test\treesketch\TreeSketch.java
+"%JDK%\javac.exe" --release 8 -classpath "classes;%AJ%;%CORE%;..\sound\sound.jar;..\sound\jsyn-17.1.0.jar!XJARS!" -d classes ..\..\android\app\src\main\java\processing\test\treesketch\TreeSketch.java || exit /b 1
 
 echo == jar sketch ==
 "%JDK%\jar.exe" cf sketch.jar -C classes . || exit /b 1

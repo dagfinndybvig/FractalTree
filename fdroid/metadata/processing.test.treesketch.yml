@@ -1,0 +1,33 @@
+# F-Droid build metadata draft for FractalTree.
+# To submit: fork https://gitlab.com/fdroid/fdroiddata, copy this file to
+# metadata/processing.test.treesketch.yml, and open a merge request.
+# Known review friction: app/libs/*.jar are prebuilt (Processing Android core,
+# Sound library, JSyn — all LGPL, provenance documented in ANDROID.md).
+Categories:
+  - Sports & Health
+License: MIT
+AuthorName: Dagfinn Dybvig
+Name: Fractal Tree
+Summary: A meditation app inspired by fractal geometry
+Description: |-
+    A quiet, meditative app inspired by fractal geometry. A recursive tree
+    sways in a wind made of filtered noise, and pentatonic chimes ring as it
+    breathes — the same gust signal drives what you see and what you hear.
+    Tap anywhere to mute.
+
+    Built with Processing. Free software under the MIT license.
+SourceCode: https://github.com/dagfinndybvig/FractalTree
+IssueTracker: https://github.com/dagfinndybvig/FractalTree/issues
+RepoType: git
+Repo: https://github.com/dagfinndybvig/FractalTree.git
+AutoUpdateMode: Version v%v
+UpdateCheckMode: Tags
+CurrentVersion: 1.1-alpha
+CurrentVersionCode: 2
+Builds:
+  - versionName: 1.1-alpha
+    versionCode: 2
+    commit: v1.1-alpha
+    subdir: android
+    gradle:
+      - yes

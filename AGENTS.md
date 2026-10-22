@@ -58,11 +58,13 @@ sync work they have approved.
 
 ## Android builds
 
-`FractalTree.apk` is built headlessly from `android-build\project\` — the
-full pipeline, dependency closure, and hard-won gotchas are documented in
-`ANDROID.md`. Read it before touching the build. Key points:
+The primary build is the gradle project in `android\` (F-Droid-ready; see
+`ANDROID.md` "Gradle pipeline"). The legacy hand-built pipeline in
+`android-build\project\` still works and is documented in `ANDROID.md`.
+Key points:
 
-- The Android sketch source is `android-build\project\TreeSketch.java`
+- The Android sketch source is
+  `android\app\src\main\java\processing\test\treesketch\TreeSketch.java`
   (Java syntax — `(int)` casts, `f` float suffixes). Keep it in sync with
   `tree\tree.pde` when the sketch changes, and sync both sketch locations.
 - **Ship rule: verify in the emulator with the user before delivering an

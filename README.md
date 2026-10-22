@@ -18,7 +18,9 @@ C:\Users\dybvig\Coding\Processing\
 ├── robot\robot.pde              Robot arm / inverse-kinematics demo
 ├── tree\tree.pde                Fractal tree with wind + pentatonic chimes
 ├── FractalTree.apk              Signed APK of the tree sketch (see ANDROID.md)
-├── android-build\               Android SDK, toolchain, and build project
+├── android\                     Gradle project — primary, F-Droid-ready build
+├── android-build\               Legacy hand-built pipeline + Android SDK
+├── fdroid\                      F-Droid metadata draft
 └── README.md / AGENTS.md        Docs for humans and agents
 ```
 

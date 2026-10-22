@@ -34,3 +34,9 @@
 
 # Emulator / sdkmanager logs
 /android-build/*.log
+
+# Gradle distribution and build caches (the wrapper + build files ARE tracked)
+/android-build/gradle-8.9*
+/android/.gradle/
+/android/app/build/
+/android/local.properties
