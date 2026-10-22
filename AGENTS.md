@@ -80,3 +80,7 @@ cannot build the current sources (package renamed to
 - The approved APK lives at the workspace root; the latest build lands in
   `android\app\build\outputs\apk\release\` (gitignored) — copy it to the
   root only after emulator verification.
+- **Releases**: after verification and user approval, tag `v<version>`,
+  push the tag, then `gh release create <tag> <apk>#FractalTree.apk
+  --latest`. Shipped versions are full releases, never `--prerelease`
+  (GitHub's "Latest" badge follows the most recent non-prerelease).

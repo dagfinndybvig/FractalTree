@@ -21,8 +21,8 @@ was Processing's export default — changed before F-Droid inclusion froze it).
 - `android\app\src\main\java\io\github\dagfinndybvig\fractaltree\` —
   TreeSketch.java (canonical Android sketch source) + MainActivity.java
 - `android\app\src\main\res\` — Theme.Tree + launcher icons (legacy
-  mipmap PNGs + adaptive icon; regenerate with the PIL script in the
-  session scratchpad, palette matches the sketch)
+  mipmap PNGs + adaptive icon; regenerate with `tools\make_icons.py`,
+  a PIL script whose palette matches the sketch)
 - `android\app\src\main\assets\shaders\` — the core GLES shaders
 - `android\app\libs\` — processing-core.jar, sound.jar, jsyn-17.1.0.jar
   (prebuilt from LGPL sources; provenance in this file)
@@ -253,5 +253,10 @@ and stays alive with an empty error log.
   merge request to gitlab.com/fdroid/fdroiddata is the remaining step.
   Expected review topic: the prebuilt jars in `app\libs\` (LGPL,
   provenance documented above).
+- **Releases**: GitHub releases are the distribution channel. Convention:
+  tag `v<version>`, push the tag, then
+  `gh release create <tag> <apk>#FractalTree.apk --latest` — shipped
+  versions are full releases (GitHub's "Latest" badge follows the most
+  recent non-prerelease). Current: v1.2.1-alpha (versionCode 4).
 - **AAB / Play Store**: not planned — distribution is GitHub releases
   and (hopefully) F-Droid.

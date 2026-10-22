@@ -12,8 +12,8 @@ Remaining work, in order. Done items move to the git log, not here.
 
 ## Distribution hygiene
 
-- [ ] Install v1.2-alpha on your phone and remove the old `processing.test.treesketch` app
-- [ ] Share the v1.2-alpha release link with friends
+- [ ] Remove the old `processing.test.treesketch` app from your phone (v1.2.1-alpha installs alongside it as a separate entry)
+- [ ] Share the Latest release link with friends
 
 ## Possible later (no commitments)
 
