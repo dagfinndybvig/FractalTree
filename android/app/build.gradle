@@ -3,7 +3,7 @@ plugins {
 }
 
 // FractalTree — a Processing sketch packaged as an Android app.
-// The sketch itself is app/src/main/java/processing/test/treesketch/TreeSketch.java
+// The sketch itself is app/src/main/java/io/github/dagfinndybvig/fractaltree/TreeSketch.java
 // (kept in sync with tree/tree.pde in the workspace root).
 // processing-core.jar, sound.jar and jsyn are the Processing Android runtime
 // and Sound library (LGPL) — prebuilt from FOSS sources, see ANDROID.md.
@@ -15,8 +15,8 @@ android {
         applicationId 'io.github.dagfinndybvig.fractaltree'
         minSdk 24
         targetSdk 34
-        versionCode 4
-        versionName '1.2.1-alpha'
+        versionCode 5
+        versionName '1.3.0-alpha'
     }
 
     signingConfigs {

@@ -45,7 +45,8 @@ phone (download link, Drive, etc.), tap it in Files, and allow *this app* to
 install unknown apps when Android asks (the permission is per-app, not
 global), then tap the APK again. Play Protect may show a warning for
 sideloaded apps — expected for anything not from the Play Store. Requires
-Android 7.0+ (minSdk 24). Tap the tree to mute.
+Android 7.0+ (minSdk 24). Tap to mute; double-tap to shuffle the whole
+scene — palette, speeds, tree shape, and musical scale.
 
 Note: releases up to 1.1-alpha used a different app id, so they sit
 alongside the current app as a separate entry — install 1.2.1-alpha or

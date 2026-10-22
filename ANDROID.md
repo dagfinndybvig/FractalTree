@@ -262,6 +262,7 @@ and stays alive with an empty error log.
   tag `v<version>`, push the tag, then
   `gh release create <tag> <apk>#FractalTree.apk --latest` — shipped
   versions are full releases (GitHub's "Latest" badge follows the most
-  recent non-prerelease). Current: v1.2.1-alpha (versionCode 4).
+  recent non-prerelease). Current: v1.3.0-alpha (versionCode 5) — adds
+  double-tap shuffle (palette/speed/shape/scale randomization).
 - **AAB / Play Store**: not planned — distribution is GitHub releases
   and (hopefully) F-Droid.
