@@ -84,7 +84,9 @@ manifest throws `ClassCastException`. Instead:
 
 For a **sketch-only change** (no manifest/res edits), `project\build.bat`
 does steps 3–5 below, reusing the existing `base.apk`, `gen\` R classes,
-and `stage\` assets — run it and skip to emulator verification.
+and `stage\` assets — run it and skip to emulator verification. Those
+intermediates are gitignored, so on a fresh clone run steps 1–2 once to
+regenerate them.
 
 Run from `android-build\project\`, with `BT` = build-tools dir, `AJ` =
 `android.jar`, `CORE` = `processing-core.jar`, JDK = bundled JDK,

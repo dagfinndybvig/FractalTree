@@ -22,6 +22,18 @@ C:\Users\dybvig\Coding\Processing\
 └── README.md / AGENTS.md        Docs for humans and agents
 ```
 
+## Repository
+
+This workspace is a git repo, pushed to
+https://github.com/dagfinndybvig/FractalTree. Tracked: the sketches, docs,
+Android build sources, the small build inputs that are painful to recreate
+(AndroidX class/res closure, `processing-core.jar`, Sound/JSyn jars, debug
+keystore), and the shipped APK. Ignored via `.gitignore`: the portable IDE,
+the Android SDK, AndroidMode, AndroidX source aars, and all generated build
+intermediates — all re-downloadable or regenerated per `ANDROID.md`. A
+fresh clone must run the full `ANDROID.md` pipeline (steps 1–2) once before
+`android-build\project\build.bat` works.
+
 ## Running sketches
 
 - **IDE**: run `Processing\Processing.exe`, open a sketch, press Ctrl+R.
