@@ -252,7 +252,8 @@ and stays alive with an empty error log.
 - **App id**: `io.github.dagfinndybvig.fractaltree` since v1.2-alpha
   (was Processing's export default `processing.test.treesketch`).
 - **F-Droid**: metadata draft ready in `fdroid\metadata\`; the submission
-  merge request to gitlab.com/fdroid/fdroiddata is the remaining step.
+  merge request to gitlab.com/fdroid/fdroiddata is the remaining step —
+  tooling is prepared (glab CLI + token, see TODO.md).
   Expected review topic: the prebuilt jars in `app\libs\` (LGPL,
   provenance documented above).
 - **Releases**: GitHub releases are the distribution channel. Convention:
