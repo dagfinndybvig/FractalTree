@@ -251,9 +251,11 @@ and stays alive with an empty error log.
   tree glyph in the sketch's palette).
 - **App id**: `io.github.dagfinndybvig.fractaltree` since v1.2-alpha
   (was Processing's export default `processing.test.treesketch`).
-- **F-Droid**: metadata draft ready in `fdroid\metadata\`; the submission
-  merge request to gitlab.com/fdroid/fdroiddata is the remaining step —
-  tooling is prepared locally (glab CLI + access token).
+- **F-Droid**: submission merge request open since 2026-10-22 —
+  gitlab.com/fdroid/fdroiddata MR !53706 (metadata file committed to a
+  fork branch). Awaiting review; expected topic is the prebuilt jars in
+  `app\libs\` (LGPL, provenance above). Working notes live in the local
+  (untracked) TODO.md.
   Expected review topic: the prebuilt jars in `app\libs\` (LGPL,
   provenance documented above).
 - **Releases**: GitHub releases are the distribution channel. Convention:
