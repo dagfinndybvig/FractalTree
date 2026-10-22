@@ -8,15 +8,15 @@ plugins {
 // processing-core.jar, sound.jar and jsyn are the Processing Android runtime
 // and Sound library (LGPL) — prebuilt from FOSS sources, see ANDROID.md.
 android {
-    namespace 'processing.test.treesketch'
+    namespace 'io.github.dagfinndybvig.fractaltree'
     compileSdk 34
 
     defaultConfig {
-        applicationId 'processing.test.treesketch'
+        applicationId 'io.github.dagfinndybvig.fractaltree'
         minSdk 24
         targetSdk 34
-        versionCode 2
-        versionName '1.1-alpha'
+        versionCode 3
+        versionName '1.2-alpha'
     }
 
     signingConfigs {

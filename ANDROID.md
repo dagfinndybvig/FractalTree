@@ -4,18 +4,25 @@ How `FractalTree.apk` was built from the tree sketch, headlessly, without
 Android Mode's GUI — and verified running on an emulator. The toolchain is
 reusable for other sketches.
 
-**The primary build is now the gradle project in `android\`** (below); the
-hand-built pipeline in this document is kept for reference and as a
-fallback.
+**The primary build is the gradle project in `android\`** (below). The
+hand-built pipeline in this document is kept for reference only: it is
+**frozen** at the `processing.test.treesketch` era (v1.0 / v1.1-alpha) and
+does not build the current sources, which moved to the
+`io.github.dagfinndybvig.fractaltree` package in v1.2-alpha. Its
+`debug.keystore` is still the signing key for the gradle build.
 
 ## Gradle pipeline (primary, F-Droid-ready)
 
 `android\` is a standard gradle project (gradle 8.9, AGP 8.5.2, compileSdk
-34, targetSdk 34, versionCode 2 / versionName 1.1-alpha):
+34, targetSdk 34). Since v1.2-alpha the application id is
+`io.github.dagfinndybvig.fractaltree` (the old `processing.test.treesketch`
+was Processing's export default — changed before F-Droid inclusion froze it).
 
-- `android\app\src\main\java\processing\test\treesketch\` — TreeSketch.java
-  (canonical Android sketch source) + MainActivity.java
-- `android\app\src\main\res\values\styles.xml` — Theme.Tree
+- `android\app\src\main\java\io\github\dagfinndybvig\fractaltree\` —
+  TreeSketch.java (canonical Android sketch source) + MainActivity.java
+- `android\app\src\main\res\` — Theme.Tree + launcher icons (legacy
+  mipmap PNGs + adaptive icon; regenerate with the PIL script in the
+  session scratchpad, palette matches the sketch)
 - `android\app\src\main\assets\shaders\` — the core GLES shaders
 - `android\app\libs\` — processing-core.jar, sound.jar, jsyn-17.1.0.jar
   (prebuilt from LGPL sources; provenance in this file)
@@ -118,11 +125,10 @@ manifest throws `ClassCastException`. Instead:
 
 ## Rebuild pipeline
 
-For a **sketch-only change** (no manifest/res edits), `project\build.bat`
-does steps 3–5 below, reusing the existing `base.apk`, `gen\` R classes,
-and `stage\` assets — run it and skip to emulator verification. Those
-intermediates are gitignored, so on a fresh clone run steps 1–2 once to
-regenerate them.
+The legacy pipeline below is frozen reference material (see top). For all
+current work, sketch-only changes are just: edit
+`android\app\src\main\java\...\TreeSketch.java`, run
+`android\gradlew.bat assembleRelease`, verify in the emulator.
 
 Run from `android-build\project\`, with `BT` = build-tools dir, `AJ` =
 `android.jar`, `CORE` = `processing-core.jar`, JDK = bundled JDK,

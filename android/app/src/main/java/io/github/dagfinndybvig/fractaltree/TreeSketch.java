@@ -1,4 +1,4 @@
-package processing.test.treesketch;
+package io.github.dagfinndybvig.fractaltree;
 
 import processing.core.*;
 import processing.sound.*;

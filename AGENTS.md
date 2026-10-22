@@ -58,13 +58,15 @@ sync work they have approved.
 
 ## Android builds
 
-The primary build is the gradle project in `android\` (F-Droid-ready; see
-`ANDROID.md` "Gradle pipeline"). The legacy hand-built pipeline in
-`android-build\project\` still works and is documented in `ANDROID.md`.
-Key points:
+The only maintained build is the gradle project in `android\`
+(F-Droid-ready; see `ANDROID.md` "Gradle pipeline"). The hand-built
+pipeline in `android-build\project\` is frozen reference material — it
+cannot build the current sources (package renamed to
+`io.github.dagfinndybvig.fractaltree` in v1.2-alpha) but its
+`debug.keystore` is still the signing key. Key points:
 
 - The Android sketch source is
-  `android\app\src\main\java\processing\test\treesketch\TreeSketch.java`
+  `android\app\src\main\java\io\github\dagfinndybvig\fractaltree\TreeSketch.java`
   (Java syntax — `(int)` casts, `f` float suffixes). Keep it in sync with
   `tree\tree.pde` when the sketch changes, and sync both sketch locations.
 - **Ship rule: verify in the emulator with the user before delivering an
